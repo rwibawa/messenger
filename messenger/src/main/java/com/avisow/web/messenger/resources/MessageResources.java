@@ -28,7 +28,7 @@ public class MessageResources {
 	
 	@GET
 	@Path("/{messageId}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Message getMessage(@PathParam("messageId") long messageId) {
 		return messageService.getMessage(messageId);
 	}
@@ -51,9 +51,9 @@ public class MessageResources {
 	
 	@DELETE
 	@Path("/{messageId}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void deleteMessage(@PathParam("messageId") long messageId) {
-		messageService.removeMessage(messageId);
+	@Produces(MediaType.APPLICATION_JSON)
+	public Message deleteMessage(@PathParam("messageId") long messageId) {
+		return messageService.removeMessage(messageId);
 	}
 
 }

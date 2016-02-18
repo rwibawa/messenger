@@ -5,6 +5,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.avisow.web.messenger.database.HibernateStub;
+
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -20,6 +22,9 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
+    	HibernateStub stub = new HibernateStub();
+    	stub.insertStock();
+    	
         return "Got it!";
     }
 }
